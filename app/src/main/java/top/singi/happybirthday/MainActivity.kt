@@ -10,14 +10,20 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.width
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.rounded.Email
+import androidx.compose.material3.Icon
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.graphics.vector.ImageVector
 import androidx.compose.ui.layout.ContentScale
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
@@ -213,6 +219,36 @@ fun QuadrantText(title: String, content: String, modifier: Modifier = Modifier) 
     }
 }
 
+/*
+* 名片
+* */
+@Composable
+fun BusinessCard(modifier: Modifier = Modifier) {
+    Column(verticalArrangement = Arrangement.Center, horizontalAlignment = Alignment.CenterHorizontally, modifier = modifier.fillMaxSize()) {
+        Image(painter = painterResource(id = R.drawable.ic_task_completed), contentDescription = null)
+        Text(text = "Full Name", fontWeight = FontWeight.Bold, fontSize = 24.sp)
+        Text(text = "Title")
+
+        Column(modifier = Modifier.padding(top = 40.dp)) {
+            BusinessCardRow(text = "+00(00)000 000", imageVector = Icons.Rounded.Email)
+            BusinessCardRow(text = "@socialmediahandle", imageVector = Icons.Rounded.Email)
+            BusinessCardRow(text = "email@domail.com", imageVector = Icons.Rounded.Email)
+        }
+    }
+}
+
+/*
+* 名片行
+* */
+@Composable
+fun BusinessCardRow(text: String, imageVector: ImageVector) {
+    Row() {
+        Icon(imageVector, contentDescription = null)
+        Spacer(modifier = Modifier.width(10.dp))
+        Text(text = text)
+    }
+}
+
 @Preview(showBackground = true)
 @Composable
 fun BirthdayCardPreview() {
@@ -229,6 +265,8 @@ fun BirthdayCardPreview() {
 //            Quadrant(
 //                modifier = Modifier.padding(innerPadding)
 //            )
+
+//            BusinessCard(modifier = Modifier.padding(innerPadding))
         }
     }
 }
